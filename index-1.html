@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+        .hero, .slide, .slide3 {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+            text-align: center;
+        }
+        .hero {
+            background-color: #ffffff;
+        }
+        .slide {
+            background-color: #f5f5f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .slide3 {
+            background-color: #ffffff;
+        }
+        .quote {
+            position: absolute;
+            top: 35px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 600px;
+        }
+        .separator {
+            position: absolute;
+            top: 120px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: #ccc;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .nav {
+            position: absolute;
+            top: 123px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 20px;
+            background-color: #f0f0f0;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .nav img {
+            margin: 0 10px;
+        }
+        .title {
+            position: absolute;
+            top: 225px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 400px;
+        }
+        .diagram {
+            position: absolute;
+            top: 300px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 800px;
+        }
+        .left-section {
+            width: 40%;
+            height: 80%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .left-section img {
+            max-width: 100%;
+            max-height: 100%;
+        }
+        .right-section {
+            width: 50%;
+            height: 80%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            padding-left: 20px;
+        }
+        .right-section img {
+            margin-bottom: 20px;
+            max-width: 100%;
+        }
+        .read-more {
+            background-color: #000000;
+            color: #ffffff;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+        }
+        .pagination {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .pagination img {
+            width: 30px;
+            height: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="hero">
+        <img class="quote" src="header-quote.png" alt="Quote">
+        <div class="separator"></div>
+        <div class="nav">
+            <img src="philosophy_text.png" alt="Philosophy">
+            <img src="publications_text.png" alt="Publications">
+            <img src="sports_text.png" alt="Sports">
+            <img src="contact_text.png" alt="Contact">
+        </div>
+        <img class="title" src="Heart of Philosophy.png" alt="Heart of Philosophy">
+        <img class="diagram" src="Image 1.png" alt="Diagram">
+    </div>
+    <div class="slide">
+        <div class="left-section">
+            <img src="Image 2.png" alt="Die kleine Philosophie des Seyns">
+        </div>
+        <div class="right-section">
+            <img src="Publications.png" alt="Publications">
+            <img src="Quote - 2.png" alt="Die kleine Philosophie des Seyns (German Edition)">
+            <img src="Read More.png" alt="Read More" class="read-more">
+        </div>
+        <div class="pagination">
+            <img src="Group 2.png" alt="All Dots">
+        </div>
+    </div>
+    <div class="slide3">
+        <img src="METAPHYSICS IS NOT DEAD!.png" alt="Metaphysics is Not Dead" style="position: absolute; top: 50px; left: 50%; transform: translateX(-50%); width: 600px;">
+        <img src="Group 1.png" alt="All Information" style="position: absolute; top: 150px; left: 50%; transform: translateX(-50%); width: 80%;">
+        <div class="pagination">
+            <img src="Group 2.png" alt="All Dots">
+        </div>
+    </div>
+</body>
+</html>
