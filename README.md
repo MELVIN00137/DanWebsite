@@ -32,10 +32,10 @@ Prerequisites
 - Fill out and submit the contact form to see a confirmation popup (resets after 3 seconds).
 - The website adapts to screen size changes automatically.
 
-Assets
+# Assets
 Ensure the `assets` folder is in the same directory as `index.html`, or adjust the image paths in the HTML if needed.
 
-Hosted Website
+# Hosted Website
 The website is hosted on Netlify. Check it out here: https://incandescent-fudge-54ece2.netlify.app/
 
 
