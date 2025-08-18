@@ -22,15 +22,9 @@ Prerequisites
 - A modern web browser (e.g., Chrome, Firefox, Safari, Edge).
 - No additional dependencies or server setup required; the project runs locally in a browser.
 
-Installation
-1. Clone the repository:
-   git clone https://github.com/MELVIN/DanWebsite.git
+
    ```
-2. Navigate to the project directory:
-   
-   cd DanWebsite
-   ```
-4. Open `index.html` in a web browser to view the website locally.
+1. Open `index.html` in a web browser to view the website locally.
 
  Usage
 - Click the navigation links to scroll to different sections (Philosophy, Publications, Sports, Contact).
