@@ -25,24 +25,24 @@ Prerequisites
 Installation
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-username/your-repo-name.git
+   git clone https://github.com/MELVIN/DanWebsite.git
    ```
 2. Navigate to the project directory:
    ```bash
-   cd your-repo-name
+   cd DanWebsite
    ```
 3. Open `index.html` in a web browser to view the website locally.
 
-### Usage
+ Usage
 - Click the navigation links to scroll to different sections (Philosophy, Publications, Sports, Contact).
 - Use the "Right Arrow" in the Publications slide to switch between the first and second book content.
 - Fill out and submit the contact form to see a confirmation popup (resets after 3 seconds).
 - The website adapts to screen size changes automatically.
 
-## Assets
+Assets
 Ensure the `assets` folder is in the same directory as `index.html`, or adjust the image paths in the HTML if needed.
 
-## Hosted Website
+Hosted Website
 The website is hosted on Netlify. Check it out here: https://incandescent-fudge-54ece2.netlify.app/
 
 
