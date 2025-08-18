@@ -3,7 +3,8 @@
 ```markdown
 # Author Portfolio Website
 
-This repository contains the source code and assets for a personal portfolio website designed for an author. The website showcases the author's philosophy, publications, sports interests, and contact information through multiple interactive slides. It is built to be responsive across various screen sizes and includes dynamic content switching and a contact form.
+This repository contains the source code and assets for a personal portfolio website designed for an author. The website showcases the author's philosophy, publications, sports interests, and contact information through multiple interactive slides.
+It is built to be responsive across various screen sizes and includes dynamic content switching and a contact form.
 
 ## Overview
 
