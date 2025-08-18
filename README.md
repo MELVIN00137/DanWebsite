@@ -24,11 +24,9 @@ Prerequisites
 
 Installation
 1. Clone the repository:
-   ```bash
    git clone https://github.com/MELVIN/DanWebsite.git
    ```
 2. Navigate to the project directory:
-   ```bash
    cd DanWebsite
    ```
 3. Open `index.html` in a web browser to view the website locally.
