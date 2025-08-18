@@ -27,9 +27,10 @@ Installation
    git clone https://github.com/MELVIN/DanWebsite.git
    ```
 2. Navigate to the project directory:
+   
    cd DanWebsite
    ```
-3. Open `index.html` in a web browser to view the website locally.
+4. Open `index.html` in a web browser to view the website locally.
 
  Usage
 - Click the navigation links to scroll to different sections (Philosophy, Publications, Sports, Contact).
