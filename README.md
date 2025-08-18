@@ -1,28 +1,28 @@
 
 
 ```markdown
-# Author Portfolio Website
+Author Portfolio Website
 
 This repository contains the source code and assets for a personal portfolio website designed for an author. The website showcases the author's philosophy, publications, sports interests, and contact information through multiple interactive slides.
 It is built to be responsive across various screen sizes and includes dynamic content switching and a contact form.
 
-## Overview
+Overview
 
-- **Purpose**: A portfolio website highlighting the author's work and background.
-- **Technologies**: HTML, CSS, JavaScript (all combined in a single `index.html` file).
-- **Features**:
+- Purpose: A portfolio website highlighting the author's work and background.
+- Technologies: HTML, CSS, JavaScript (all combined in a single `index.html` file).
+- Features:
   - Responsive design with media queries for mobile, tablet, desktop, and large monitors.
   - Slide transition effect to toggle between book content in the Publications section.
   - Contact form with client-side validation and a popup confirmation.
   - Smooth scrolling navigation.
 
-## Getting Started
+Getting Started
 
-### Prerequisites
+Prerequisites
 - A modern web browser (e.g., Chrome, Firefox, Safari, Edge).
 - No additional dependencies or server setup required; the project runs locally in a browser.
 
-### Installation
+Installation
 1. Clone the repository:
    ```bash
    git clone https://github.com/your-username/your-repo-name.git
