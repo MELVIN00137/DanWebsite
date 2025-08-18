@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Website</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      overflow-x: hidden;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      object-fit: contain;
+    }
+
+    /* Container system for centering */
+    .container {
+      max-width: clamp(320px, 90%, 1200px);
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+
+    /* Base styles for slides */
+    .hero,
+    .slide,
+    .slide3,
+    .slide4 {
+      width: 100%;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      padding: 2rem 0;
+    }
+
+    /* Separator */
+    .separator {
+      width: 100vw;
+      height: 2px;
+      background-color: #ccc;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      z-index: 10;
+      position: absolute;
+      left: 0;
+      right: 0;
+      margin: 0;
+    }
+
+    /* Navigation */
+    .nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      background-color: #f0f0f0;
+      padding: 0.5rem 1.5rem !important;
+      justify-content: center;
+      align-items: center;
+    }
+    .nav a {
+      text-decoration: none;
+      color: #616A79;
+      font-family: Futura, "Trebuchet MS", Arial, sans-serif;
+      font-size: 1rem;
+    }
+    .nav a:hover {
+      color: #007bff;
+    }
+    .nav a:focus,
+    button:focus {
+      outline: 2px solid #007bff;
+      outline-offset: 2px;
+    }
+
+    /* Slide 2 fix */
+    #slide2 {
+      background-color: #F3F4F6;
+      position: relative;
+    }
+    #slide2 .container {
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+      gap: 2rem;
+    }
+    .left-section,
+    .right-section {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+    .pagination {
+      margin-top: 1rem;
+    }
+    .read-more-1,
+    .read-more-2 {
+      margin-top: 1rem;
+      background-color: #000; /* Black background */
+      border-radius: 10px; /* Curved corners */
+      padding: 0.5rem; /* Space around the image */
+      display: inline-block; /* Ensure proper display */
+    }
+    .right-arrow {
+      margin-top: 1rem;
+      align-self: flex-end;
+    }
+
+    #slide3 .container img[alt="Information"] {
+      background-color: #F3F4F6;
+    }
+
+    /* Contact form */
+    .slide4.contact-section {
+      background-color: #F3F4F6;
+    }
+    .contact-form {
+      background-color: #fff;
+      padding: 2.5rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      width: 95%;
+      text-align: left;
+    }
+    .contact-form h2 {
+      margin-bottom: 1.5rem;
+      color: #333;
+    }
+    .contact-form label {
+      display: block;
+      margin-bottom: 0.5rem;
+      color: #616A79;
+    }
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      padding: 0.75rem;
+      margin-bottom: 1rem;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+    }
+    .contact-form textarea {
+      height: 120px;
+      resize: vertical;
+    }
+    .contact-form button {
+      background-color: #000;
+      color: #fff;
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      width: 100%;
+    }
+    .contact-form button:hover {
+      background-color: #333;
+    }
+    .error {
+      color: red;
+      margin-top: -0.5rem;
+      margin-bottom: 1rem;
+      display: none;
+    }
+
+    /* Popup */
+    .popup {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: #fff;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      z-index: 1000;
+      text-align: center;
+    }
+    .popup.show {
+      display: block;
+    }
+    .overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 999;
+    }
+    .overlay.show {
+      display: block;
+    }
+
+    /* Mobile Portrait */
+    @media (max-width: 480px) {
+      #slide2 .container {
+        flex-direction: column;
+        align-items: center;
+      }
+      .left-section, .right-section {
+        align-items: center;
+      }
+      .All-Dots {
+        max-width: 17%;
+      }
+      .nav {
+        padding: 0.5rem 1rem;
+      }
+      .nav a {
+        font-size: 0.8rem;
+      }
+      .contact-form {
+        padding: 1.5rem;
+        width: 95%;
+      }
+      #slide2 .left-section .book-image {
+        max-width: 100%;
+      }
+      #slide2 .right-section {
+        width: 100%;
+      }
+      .right-arrow {
+        max-width: 70% !important;
+        align-self: center;
+      }
+      .container {
+        flex-direction: column;
+        align-items: center;
+        max-width: 90%;
+      }
+    }
+
+    /* Mobile Landscape */
+    @media (max-width: 1023px) and (orientation: landscape) {
+      #slide2 .container {
+        flex-direction: column;
+        align-items: center;
+      }
+      .left-section, .right-section {
+        align-items: center;
+      }
+      .nav {
+        padding: 0.5rem 2rem;
+      }
+      .All-Dots {
+        max-width: 10%;
+      }
+      .right-arrow {
+        max-width: 50%;
+      }
+      .contact-form {
+        padding: 2rem;
+        width: 95%;
+      }
+      #slide2 .left-section .book-image {
+        max-width: 80%;
+      }
+      #slide2 .right-section {
+        width: 100%;
+      }
+      #slide2 .right-arrow {
+        align-self: center;
+      }
+    }
+
+    /* Tablets */
+    @media (min-width: 481px) and (max-width: 1023px) and (orientation: portrait) {
+      #slide2 .container {
+        flex-direction: column;
+        align-items: center;
+      }
+      .left-section, .right-section {
+        align-items: center;
+      }
+      .nav {
+        padding: 0.5rem 2rem;
+      }
+      .All-Dots {
+        max-width: 10%;
+      }
+      .contact-form {
+        padding: 2.2rem;
+        width: 95%;
+      }
+      #slide2 .left-section .book-image {
+        max-width: 70%;
+      }
+      #slide2 .right-section {
+        width: 100%;
+      }
+      #slide2 .right-arrow {
+        align-self: center;
+      }
+    }
+
+    /* Desktops */
+    @media (min-width: 1024px) and (max-width: 1439px) {
+      .hero {
+        gap: 2.5rem;
+      }
+      .All-Dots {
+        max-width: 17%;
+      }
+      .second-dot {
+        margin-left: -100px;
+      }
+      .second-book-content {
+        margin-left: -32px;
+      }
+      #slide2 .container {
+        flex-direction: row;
+        justify-content: space-between;
+      }
+      #slide2 .left-section {
+        width: 40%;
+      }
+      #slide2 .right-section {
+        width: 55%;
+      }
+      #slide2 .right-arrow {
+        position: absolute;
+        right: 1rem;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+      .contact-form {
+        padding: 2.5rem;
+        width: 95%;
+      }
+    }
+
+    /* Large Monitors */
+    @media (min-width: 1440px) {
+      .hero {
+        gap: 3rem;
+      }
+      .quote {
+        max-width: 70%;
+      }
+      .book-image {
+        max-width: 80%;
+      }
+      .nav {
+        width: 500px;
+        margin-left: 325px;
+      }
+      .second-dot {
+        margin-left: -100px;
+      }
+      .second-book-content {
+        margin-left: -32px;
+      }
+      #slide2 .container {
+        flex-direction: row;
+        justify-content: space-between;
+      }
+      #slide2 .left-section {
+        width: 50%;
+      }
+      #slide2 .right-section {
+        width: 60%;
+      }
+      #slide2 .right-arrow {
+        position: absolute;
+        right: 10rem;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+      #slide2 .All-Dots {
+        max-width: 27%;
+        padding-left: 0px;
+        padding-right: 70px;
+      }
+      .contact-form {
+        padding: 2.5rem;
+        width: 95%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Slide 1 -->
+  <div class="hero" id="slide1">
+    <div class="container">
+      <img class="quote" src="" alt="Quote" class="quote">
+      <div class="separator"></div>
+      <div class="nav">
+        <a href="#slide1" class="nav-link">Philosophy</a>
+        <a href="#slide2" class="nav-link">Publication</a>
+        <a href="#slide4" class="nav-link">Sports</a>
+        <a href="#slide5" class="nav-link">Contact</a>
+      </div>
+      <img class="title" src="Heart of Philosophy.png" alt="Heart of Philosophy">
+      <img class="diagram" src="Image 1.png" alt="Diagram">
+    </div>
+  </div>
+
+  <!-- Slide 2 (fixed layout) -->
+  <div class="slide" id="slide2">
+    <div class="container">
+      <div class="left-section">
+        <img src="Image 2.png" alt="Die kleine Philosophie des Seyns" class="book-image">
+        <div class="pagination">
+          <img src="1st dot.png" alt="All Dots" class="All-Dots">
+        </div>
+      </div>
+      <div class="right-section">
+        <img src="Publications.png" alt="Publications">
+        <img src="Dan.png" alt="Dan">
+        <img src="Quote - 2.png" alt="Quote">
+        <img src="Read More - 1.png" alt="Read More" class="read-more-1">
+        <img src="Right arrow.png" alt="Right Arrow" class="right-arrow">
+      </div>
+    </div>
+  </div>
+
+  <!-- Slide 3 -->
+  <div class="slide3">
+    <div class="container">
+      <img src="METAPHYSICS IS NOT DEAD!.png" alt="Metaphysics">
+      <img src="Group 1.png" alt="Information">
+    </div>
+  </div>
+
+  <!-- Slide 4 - Sports -->
+  <div class="slide4" id="slide4">
+    <div class="container">
+      <img src="Slide 4.jpg" alt="Sports">
+    </div>
+  </div>
+
+  <!-- Slide 5 - Contact -->
+  <div class="slide4 contact-section" id="slide5">
+    <div class="container">
+      <form class="contact-form" id="contactForm" onsubmit="return handleSubmit(event)">
+        <h2>Contact Us</h2>
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" required>
+        <div class="error" id="nameError"></div>
+
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required>
+        <div class="error" id="emailError"></div>
+
+        <label for="subject">Subject</label>
+        <input type="text" id="subject" name="subject" required>
+
+        <label for="message">Message</label>
+        <textarea id="message" name="message" required></textarea>
+
+        <button type="submit">Send Message</button>
+      </form>
+      <div class="overlay" id="overlay"></div>
+      <div class="popup" id="popup">Thank you for reaching out! We’ll get back to you shortly.</div>
+    </div>
+  </div>
+
+  <!-- Slide 6 - Footer -->
+  <div class="slide4">
+    <div class="container">
+      <img src="@2025.png" alt="Footer Text" style="max-width: 60%;">
+      <img src="Daniel Lichtenberg.png" alt="Daniel" style="max-width: 100%;">
+    </div>
+  </div>
+
+  <script>
+    // Random quote image on page refresh
+    const quotes = ['q1.png', 'q2.png', 'q3.png', 'q4.png', 'q5.png', 'q6.png', 'q7.png', 'q8.png'];
+    const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
+    document.querySelector('.quote').src = randomQuote;
+
+    function handleSubmit(event) {
+      event.preventDefault();
+
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const nameError = document.getElementById('nameError');
+      const emailError = document.getElementById('emailError');
+      const overlay = document.getElementById('overlay');
+      const popup = document.getElementById('popup');
+
+      nameError.style.display = 'none';
+      emailError.style.display = 'none';
+
+      const nameRegex = /^[^0-9]+$/;
+      if (!nameRegex.test(name)) {
+        nameError.textContent = 'Name should only contain alphabets and symbols (no numbers).';
+        nameError.style.display = 'block';
+        return false;
+      }
+
+      if (!email.includes('@')) {
+        emailError.textContent = 'Please enter a valid email address.';
+        emailError.style.display = 'block';
+        return false;
+      }
+
+      overlay.classList.add('show');
+      popup.classList.add('show');
+
+      setTimeout(() => {
+        overlay.classList.remove('show');
+        popup.classList.remove('show');
+        document.getElementById('contactForm').reset();
+      }, 3000);
+
+      return false;
+    }
+
+    // Slide 2 Functionality
+    document.querySelector('#slide2 .read-more-1').addEventListener('click', () => {
+      window.open('https://www.amazon.in/Die-kleine-Philosophie-Seyns-German-ebook/dp/B0C4TP2TJY/ref=sr_1_2?s=digital-text&sr=1-2&text=Daniel+Lichtenberg+Lisy', '_blank');
+    });
+
+    let isSecondBook = false;
+    const slide2 = document.getElementById('slide2');
+    const leftSection = slide2.querySelector('.left-section');
+    const rightSection = slide2.querySelector('.right-section');
+    const pagination = slide2.querySelector('.pagination img');
+    let readMore = rightSection.querySelector('.read-more-1');
+
+    document.querySelector('#slide2 .right-arrow').addEventListener('click', () => {
+      // Trigger slide-right transition
+      slide2.style.transition = 'transform 0.5s ease-in-out';
+      slide2.style.transform = 'translateX(-100%)';
+      setTimeout(() => {
+        slide2.style.transform = 'translateX(0)';
+      }, 500);
+
+      if (!isSecondBook) {
+        // Switch to Second Book
+        leftSection.querySelector('img').src = '2nd book image.jpg';
+        rightSection.querySelector('img[alt="Dan"]').remove();
+        rightSection.querySelector('img[alt="Quote"]').src = '2nd book content.png';
+        rightSection.querySelector('img[alt="Quote"]').classList.add('second-book-content');
+        pagination.src = '2nd dot.png';
+        pagination.classList.add('second-dot');
+        readMore.remove();
+        readMore = document.createElement('img');
+        readMore.src = 'Read More - 2.png';
+        readMore.alt = 'Read More';
+        readMore.className = 'read-more-2';
+        rightSection.appendChild(readMore);
+        readMore.addEventListener('click', () => {
+          window.open('https://www.amazon.in/Tao-Mysticism-Way-Agnostic-Universalism-ebook/dp/B0C2JQ8LSB/ref=sr_1_1?s=digital-text&sr=1-1&text=Daniel+Lichtenberg+Lisy', '_blank');
+        });
+        isSecondBook = true;
+      } else {
+        // Switch back to First Book
+        leftSection.querySelector('img').src = 'Image 2.png';
+        if (!rightSection.querySelector('img[alt="Dan"]')) {
+          const danImg = document.createElement('img');
+          danImg.src = 'Dan.png';
+          danImg.alt = 'Dan';
+          rightSection.insertBefore(danImg, rightSection.querySelector('img[alt="Quote"]'));
+        }
+        rightSection.querySelector('img[alt="Quote"]').src = 'Quote - 2.png';
+        rightSection.querySelector('img[alt="Quote"]').classList.remove('second-book-content');
+        pagination.src = '1st dot.png';
+        pagination.classList.remove('second-dot');
+        readMore.remove();
+        readMore = document.createElement('img');
+        readMore.src = 'Read More - 1.png';
+        readMore.alt = 'Read More';
+        readMore.className = 'read-more-1';
+        rightSection.appendChild(readMore);
+        readMore.addEventListener('click', () => {
+          window.open('https://www.amazon.in/Die-kleine-Philosophie-Seyns-German-ebook/dp/B0C4TP2TJY/ref=sr_1_2?s=digital-text&sr=1-2&text=Daniel+Lichtenberg+Lisy', '_blank');
+        });
+        isSecondBook = false;
+      }
+    });
+
+    // Smooth scroll functionality
+    document.querySelectorAll('.nav-link').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href');
+        const targetSection = document.querySelector(targetId);
+        if (targetSection) {
+          targetSection.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    });
+  </script>
+</body>
+</html>
